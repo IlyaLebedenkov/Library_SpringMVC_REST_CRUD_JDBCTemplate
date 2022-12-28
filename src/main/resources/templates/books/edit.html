@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit book</title>
+</head>
+<body>
+    <form th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
+        <label for="title">Введите название книги:</label>
+        <input type="text" th:field="*{title}" id="title" value="${book.getTitle()}">
+        <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+        <br/>
+        <label for="author">Введите автора:</label>
+        <input type="text" th:field="*{author}" id="author" value="${book.getAuthor()}">
+        <div style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></div>
+        <br/>
+        <label for="year">Введите год:</label>
+        <input type="text" th:field="*{year}" id="year" value="${book.getYear()}">
+        <div style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div>
+        <br/>
+        <input type="submit" value="Редактировать!">
+    </form>
+</body>
+</html>
